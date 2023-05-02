@@ -1,19 +1,24 @@
 const { getParser } = require('codemod-cli').jscodeshift;
-const { getOptions } = require('codemod-cli');
 
 module.exports = function transformer(file, api) {
   const j = getParser(api);
-  const options = getOptions();
 
-  return j(file.source)
-    .find(j.Identifier)
-    .forEach(path => {
-      path.node.name = path.node.name
-        .split('')
-        .reverse()
-        .join('');
-    })
-    .toSource();
+  return (
+    j(file.source)
+      .find(j.CallExpression, 
+        { callee: { property: { name: "property" }, object: { type: "FunctionExpression" } } 
+      })
+      .replaceWith((p) => {
+        const functionExp = p.value.callee.object
+     	  const functionArgs = p.value.arguments
+                        
+        return j.callExpression(
+          j.identifier("computed"),
+          [...functionArgs, functionExp],
+        );
+      })
+      .toSource()
+  );
 };
 
 module.exports.type = 'js';
