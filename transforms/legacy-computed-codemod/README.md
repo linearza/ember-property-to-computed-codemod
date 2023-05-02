@@ -22,7 +22,9 @@ node ./bin/cli.js legacy-computed-codemod path/of/files/ or/some**/*glob.js
 <!--FIXTURES_TOC_START-->
 From
 ```
-const myObject = {
+import { get } from '@ember/object';
+
+const myClass = {
   myTotals: (function() {
     return get(this, "model.total") || 0;
   }).property("model.total"),
@@ -42,7 +44,10 @@ const myObject = {
 ```
 To
 ```
-const myObject = {
+import { computed } from "@ember/object";
+import { get } from '@ember/object';
+
+const myClass = {
   myTotals: computed("model.total", function() {
     return get(this, "model.total") || 0;
   }),

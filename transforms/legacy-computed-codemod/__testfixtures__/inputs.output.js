@@ -1,4 +1,7 @@
-const myObject = {
+import { computed } from "@ember/object";
+import { get } from '@ember/object';
+
+const myClass = {
   myTotals: computed("model.total", function() {
     return get(this, "model.total") || 0;
   }),

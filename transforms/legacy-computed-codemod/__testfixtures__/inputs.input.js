@@ -1,4 +1,6 @@
-const myObject = {
+import { get } from '@ember/object';
+
+const myClass = {
   myTotals: (function() {
     return get(this, "model.total") || 0;
   }).property("model.total"),
