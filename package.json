@@ -1,5 +1,5 @@
 {
-  "name": "ember-property-to-computed-codemod",
+  "name": "ember-v2-codemods",
   "version": "0.1.0",
   "scripts": {
     "lint": "eslint --cache .",

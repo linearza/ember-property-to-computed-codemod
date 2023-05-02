@@ -1,20 +1,20 @@
-# ember-property-to-computed-codemod
+# ember-v2-codemods
 
 
 ## Usage
 
 ```
-npx ember-property-to-computed-codemod ember-property-to-computed-codemod path/of/files/ or/some**/*glob.js
+npx ember-v2-codemods legacy-computed-codemod path/of/files/ or/some**/*glob.js
 
 # or
 
-yarn global add ember-property-to-computed-codemod
-ember-property-to-computed-codemod ember-property-to-computed-codemod path/of/files/ or/some**/*glob.js
+yarn global add ember-v2-codemods
+ember-v2-codemods legacy-computed-codemod path/of/files/ or/some**/*glob.js
 ```
 
 ## Local Usage
 ```
-node ./bin/cli.js ember-property-to-computed-codemod path/of/files/ or/some**/*glob.js
+node ./bin/cli.js legacy-computed-codemod path/of/files/ or/some**/*glob.js
 ```
 
 ## Input / Output
