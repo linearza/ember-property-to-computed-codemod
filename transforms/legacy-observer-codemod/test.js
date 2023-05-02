@@ -2,7 +2,7 @@
 
 const { runTransformTest } = require('codemod-cli');
 
-runTransformTest({ 
+runTransformTest({
   name: 'legacy-observer-codemod',
   path: require.resolve('./index.js'),
   fixtureDir: `${__dirname}/__testfixtures__/`,
