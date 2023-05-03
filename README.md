@@ -1,7 +1,11 @@
 # ember-v2-codemods
 
+A collection of codemods to primarily to get an outdated codebase up to an acceptable version 2 state, in preparation for further upgrades.
 
-A collection of codemods for ember-v2-codemods.
+### Complementary codemods
+* https://github.com/ember-codemods/ember-3x-codemods
+* https://github.com/jmdejno/lil-codemods
+
 
 ## Usage
 
