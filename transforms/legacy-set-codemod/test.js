@@ -3,7 +3,7 @@
 const { runTransformTest } = require('codemod-cli');
 
 runTransformTest({
-  name: 'get',
+  name: 'legacy-set-codemod',
   path: require.resolve('./index.js'),
   fixtureDir: `${__dirname}/__testfixtures__/`,
 });
