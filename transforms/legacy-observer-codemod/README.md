@@ -21,6 +21,8 @@ node ./bin/cli.js legacy-observer-codemod path/of/files/ or/some**/*glob.js
 
 From
 ```
+import { setProperties, getProperties } from "@ember/object";
+
 const myClass = {
   propertyChanged: (function() {
     return Em.run.debounce(this, () => {
@@ -32,14 +34,15 @@ const myClass = {
 
 To
 ```
-import { observer } from "@ember/object";
+import { setProperties, getProperties, observer } from "@ember/object";
+
 const myClass = {
   propertyChanged: observer("arrayProps.@each.value", "anotherProp", "thirdOne", function() {
     return Em.run.debounce(this, () => {
       this.doSomething()
     }, 300);
   }),
-} 
+}
 ```
 
 <!--FIXTURES_TOC_START-->

@@ -1,3 +1,5 @@
+import { setProperties, getProperties } from "@ember/object";
+
 const myClass = {
   propertyChanged: (function() {
     return Em.run.debounce(this, () => {

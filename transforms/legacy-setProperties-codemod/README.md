@@ -42,8 +42,7 @@ const myClass = {
 
 To
 ```
-import { setProperties } from "@ember/object";
-import { get } from "@ember/object";
+import { get, setProperties } from "@ember/object";
 
 const myClass = {
   oldSetProps() {

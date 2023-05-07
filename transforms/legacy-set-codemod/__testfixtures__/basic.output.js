@@ -1,5 +1,4 @@
-import { set } from "@ember/object";
-import { get } from "@ember/object";
+import { get, set } from "@ember/object";
 
 const myClass = {
   oldGetter: computed("myProp", function() {

@@ -22,6 +22,7 @@ node ./bin/cli.js legacy-getProperties-codemod path/of/files/ or/some**/*glob.js
 From
 ```
 import { setProperties } from "@ember/object";
+import { alias } from "@ember/object";
 
 const myClass = {
   oldGetProps() {
@@ -42,8 +43,8 @@ const myClass = {
 
 To
 ```
-import { getProperties } from "@ember/object";
-import { setProperties } from "@ember/object";
+import { setProperties, getProperties } from "@ember/object";
+import { alias } from "@ember/object";
 
 const myClass = {
   oldGetProps() {

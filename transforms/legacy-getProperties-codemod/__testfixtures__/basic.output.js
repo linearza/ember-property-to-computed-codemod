@@ -1,5 +1,5 @@
-import { getProperties } from "@ember/object";
-import { setProperties } from "@ember/object";
+import { setProperties, getProperties } from "@ember/object";
+import { alias } from "@ember/object";
 
 const myClass = {
   oldGetProps() {

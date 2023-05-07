@@ -1,4 +1,5 @@
 import { setProperties } from "@ember/object";
+import { alias } from "@ember/object";
 
 const myClass = {
   oldGetProps() {

@@ -1,37 +1,24 @@
 const { getParser } = require('codemod-cli').jscodeshift;
+const { updateImports } = require('../../utils/shared');
 
 module.exports = function transformer(file, api) {
   const j = getParser(api);
   const root = j(file.source);
 
-  return root
-    .find(j.CallExpression, {
-      callee: { property: { name: 'set', type: 'Identifier' } },
-    })
-    .replaceWith((p) => {
-      const functionExp = p.value.callee.object;
-      const functionArgs = p.value.arguments;
+  const existingExpressions = root.find(j.CallExpression, {
+    callee: { property: { name: 'set', type: 'Identifier' } },
+  });
 
-      const setImport = root.find(j.ImportSpecifier, {
-        imported: {
-          type: 'Identifier',
-          name: 'set',
-        },
-      });
+  existingExpressions.replaceWith((p) => {
+    const functionExp = p.value.callee.object;
+    const functionArgs = p.value.arguments;
 
-      if (!setImport.length) {
-        const body = root.get().value.program.body;
-        const setImport = j.importDeclaration(
-          [j.importSpecifier(j.identifier('set'))],
-          j.literal('@ember/object')
-        );
+    return j.callExpression(j.identifier('set'), [functionExp, ...functionArgs]);
+  });
 
-        body.unshift(setImport);
-      }
+  updateImports(j, root, 'set', '@ember/object');
 
-      return j.callExpression(j.identifier('set'), [functionExp, ...functionArgs]);
-    })
-    .toSource();
+  return root.toSource();
 };
 
 module.exports.type = 'js';
