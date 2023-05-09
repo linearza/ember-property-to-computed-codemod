@@ -16,8 +16,10 @@ module.exports = function transformer(file, api) {
     return j.callExpression(j.identifier('setProperties'), [functionExp, ...functionArgs]);
   });
 
-  updateImports(j, root, 'setProperties', '@ember/object');
-
+  if (existingExpressions.length) {
+    updateImports(j, root, 'setProperties', '@ember/object');
+  }
+  
   return root.toSource();
 };
 

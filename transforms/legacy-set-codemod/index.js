@@ -16,7 +16,9 @@ module.exports = function transformer(file, api) {
     return j.callExpression(j.identifier('set'), [functionExp, ...functionArgs]);
   });
 
-  updateImports(j, root, 'set', '@ember/object');
+  if (existingExpressions.length) {
+    updateImports(j, root, 'set', '@ember/object');
+  }
 
   return root.toSource();
 };

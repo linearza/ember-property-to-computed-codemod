@@ -16,7 +16,9 @@ module.exports = function transformer(file, api) {
     return j.callExpression(j.identifier('get'), [functionExp, ...functionArgs]);
   });
 
-  updateImports(j, root, 'get', '@ember/object');
+  if (existingExpressions.length) {
+    updateImports(j, root, 'get', '@ember/object');
+  }
 
   return root.toSource();
 };
